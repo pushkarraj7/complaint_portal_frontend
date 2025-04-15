@@ -29,7 +29,17 @@ function BasicDashboard() {
     }, [email]);
 
     const handleLogout = () => {
-        navigate("/portal");
+        localStorage.removeItem(`user_${email}`);
+        localStorage.removeItem(`issues_${email}`);
+
+        // Remove all Keycloak entries
+        Object.keys(localStorage).forEach((key) => {
+            if (key.startsWith('kc-')) {
+                localStorage.removeItem(key);
+            }
+        });
+
+        navigate("/portal", { replace: true });
     };
 
     const handleIssueSubmit = (e) => {
@@ -45,8 +55,8 @@ function BasicDashboard() {
             department: profileData.department,
             issueType,
             description,
-            date: new Date().toLocaleString(),
-            status: "in progress", // Default status for new issues
+            submittedOn: new Date().toLocaleString(),
+            status: "In Progress", // Default status for new issues
         };
 
         // Update the issues state and localStorage
@@ -61,8 +71,9 @@ function BasicDashboard() {
     // Filtered issues based on the selected filter
     const filteredIssues = issues.filter((issue) => {
         if (filter === "all") return true;
-        return issue.status === filter;
+        return issue.status.toLowerCase() === filter.toLowerCase();
     });
+
 
     return (
         <div className="flex min-h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100">
@@ -177,18 +188,32 @@ function BasicDashboard() {
                     <div>
                         <h2 className="text-3xl font-bold text-indigo-600 mb-6">Generated Issues</h2>
 
-                        {/* Filter Options */}
-                        <div className="mb-4">
-                            <select
-                                value={filter}
-                                onChange={(e) => setFilter(e.target.value)}
-                                className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                        {/* Filter Buttons */}
+                        <div className="mb-4 space-x-4">
+                            <button
+                                onClick={() => setFilter("all")}
+                                className={`p-3 border rounded-lg ${filter === "all" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600"} cursor-pointer`}
                             >
-                                <option value="all">All Issues</option>
-                                <option value="pending">Pending</option>
-                                <option value="in progress">In Progress</option>
-                                <option value="completed">Completed</option>
-                            </select>
+                                All Issues
+                            </button>
+                            <button
+                                onClick={() => setFilter("pending")}
+                                className={`p-3 border rounded-lg ${filter === "pending" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600"} cursor-pointer`}
+                            >
+                                Pending
+                            </button>
+                            <button
+                                onClick={() => setFilter("in progress")}
+                                className={`p-3 border rounded-lg ${filter === "in progress" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600"} cursor-pointer`}
+                            >
+                                In Progress
+                            </button>
+                            <button
+                                onClick={() => setFilter("completed")}
+                                className={`p-3 border rounded-lg ${filter === "completed" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600"} cursor-pointer`}
+                            >
+                                Completed
+                            </button>
                         </div>
 
                         {filteredIssues.length === 0 ? (
@@ -204,7 +229,7 @@ function BasicDashboard() {
                                         <p><strong>Department:</strong> {issue.department}</p>
                                         <p><strong>Issue Type:</strong> {issue.issueType}</p>
                                         <p><strong>Description:</strong> {issue.description}</p>
-                                        <p><strong>Submitted On:</strong> {issue.date}</p>
+                                        <p><strong>Submitted On:</strong> {issue.submittedOn}</p> {/* Updated to issue.submittedOn */}
                                         <p><strong>Status:</strong> {issue.status}</p>
                                     </li>
                                 ))}

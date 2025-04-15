@@ -8,25 +8,21 @@ function BasicHome() {
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
 
-    // Simulate sending OTP
     const sendOtp = () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email || !emailRegex.test(email)) {
             setErrorMessage("Please enter a valid email address.");
             return;
         }
-    
         const staticOtp = "123456";
         localStorage.setItem("otp", staticOtp);
         setIsOtpSent(true);
         setErrorMessage("");
-    };    
+    };
 
-    // Simulate OTP verification
     const verifyOtp = () => {
         const storedOtp = localStorage.getItem("otp");
         if (otp === storedOtp) {
-            // Redirect user to the dashboard after successful OTP verification
             navigate('/portal-dashboard', { state: { email } });
         } else {
             setErrorMessage("Invalid OTP, please try again.");
@@ -34,16 +30,26 @@ function BasicHome() {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 text-center px-4">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 text-center px-4 relative">
+
+            {/* Back Button */}
+            <button
+                onClick={() => navigate(-1)}
+                className="absolute top-6 left-6 bg-white border border-gray-200 rounded-full w-14 h-14 flex items-center justify-center shadow-md hover:shadow-xl hover:bg-gray-100 transition-all duration-300 ease-in-out hover:cursor-pointer group"
+            >
+                <span className="text-gray-700 text-2xl font-normal group-hover:font-bold transition-all duration-300 ease-in-out">
+                    &larr;
+                </span>
+            </button>
+
             <h1 className="text-4xl md:text-6xl font-extrabold text-gray-800 mb-4 animate-pulse">
-                Welcome to the Basic Portal
+                Welcome to the Portal
             </h1>
             <p className="text-lg md:text-xl text-gray-600 mb-8">
                 Please log in with your email to continue.
             </p>
 
             <div className="w-full max-w-sm space-y-6">
-                {/* Email Input */}
                 <div className="flex flex-col space-y-2">
                     <input
                         type="email"
@@ -54,7 +60,6 @@ function BasicHome() {
                     />
                 </div>
 
-                {/* OTP Input */}
                 {isOtpSent && (
                     <div className="flex flex-col space-y-2">
                         <input
@@ -67,12 +72,10 @@ function BasicHome() {
                     </div>
                 )}
 
-                {/* Error Message */}
                 {errorMessage && (
                     <div className="text-red-500 text-sm mt-2">{errorMessage}</div>
                 )}
 
-                {/* Action Buttons */}
                 <div className="flex justify-center items-center space-x-4">
                     <div className="flex justify-center">
                         <button
