@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Home.css";
 
 function Home() {
@@ -10,12 +12,25 @@ function Home() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (email === "admin@gmail.com" && password === "123") {
+            // Store login state in localStorage
+            localStorage.setItem('isLoggedIn', 'true');  // Store that the user is logged in
+    
+            // Redirect to the dashboard
             navigate("/admin/dashboard");
         } else {
-            alert("Invalid credentials!");
+            // Custom styled error toast on invalid credentials
+            toast.error("Invalid credentials!", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                theme: "colored",
+            });
         }
     };
-
+    
     const handleBack = () => {
         navigate("/"); // This redirects to the landing page, assuming it's at "/"
     };
@@ -29,12 +44,13 @@ function Home() {
             </ul>
             <button
                 onClick={handleBack}
-                className="absolute top-6 left-6 text-rose-600 bg-white rounded-full w-14 h-14 shadow-lg hover:bg-gray-200 focus:outline-none transition-all duration-300 ease-in-out hover:cursor-pointer"
+                className="absolute top-6 left-6 w-10 h-10 rounded-full bg-gradient-to-r from-rose-500 to-rose-700 shadow-lg flex items-center justify-center transition-all duration-300 ease-in-out hover:cursor-pointer group"
             >
-                <span className="text-2xl font-normal group-hover:font-bold transition-all duration-300 ease-in-out">
+                <span className="text-white text-2xl font-normal group-hover:rotate-360 transition-all duration-1000 ease-in-out group-hover:font-bold">
                     &larr;
                 </span>
             </button>
+
             <h1 className="text-rose-600 text-4xl md:text-5xl font-bold mb-8 z-10 animate-bounce">
                 Welcome to the Admin Portal
             </h1>
@@ -66,6 +82,20 @@ function Home() {
                     Login
                 </button>
             </form>
+
+            {/* Toast container */}
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
         </div>
     );
 }

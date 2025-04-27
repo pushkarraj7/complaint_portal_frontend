@@ -1,0 +1,90 @@
+.shapes li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 30px;
+  height: 30px;
+  background: rgba(16, 185, 129, 0.5); /* increased base opacity */
+  bottom: -150px;
+  animation: rise 20s infinite ease-in;
+  border-radius: 10%;
+  transform: rotate(45deg);
+  filter: blur(0.5px); /* softer but less blur for clarity */
+  opacity: 0.9; /* more visible */
+}
+
+.shapes li:nth-child(odd) {
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.6); /* brighter odd shapes */
+}
+
+.shapes li:nth-child(even) {
+  border-radius: 0;
+  background: rgba(52, 211, 153, 0.6); /* brighter even shapes */
+}
+
+.shapes li:nth-child(1) { left: 5%; width: 20px; height: 20px; animation-delay: 0s; }
+.shapes li:nth-child(2) { left: 15%; width: 25px; height: 25px; animation-delay: 2s; animation-duration: 18s; }
+.shapes li:nth-child(3) { left: 25%; width: 30px; height: 30px; animation-delay: 4s; }
+.shapes li:nth-child(4) { left: 35%; width: 22px; height: 22px; animation-delay: 1s; animation-duration: 16s; }
+.shapes li:nth-child(5) { left: 45%; width: 28px; height: 28px; animation-delay: 3s; }
+.shapes li:nth-child(6) { left: 55%; width: 26px; height: 26px; animation-delay: 7s; }
+.shapes li:nth-child(7) { left: 65%; width: 24px; height: 24px; animation-delay: 5s; }
+.shapes li:nth-child(8) { left: 75%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
+.shapes li:nth-child(9) { left: 85%; width: 34px; height: 34px; animation-delay: 11s; }
+.shapes li:nth-child(10) { left: 95%; width: 25px; height: 25px; animation-delay: 9s; }
+
+/* Bonus: Add a random color shift */
+.shapes li:nth-child(3n) {
+  background: rgba(110, 231, 183, 0.6); /* lighter green, more visible */
+}
+
+.shapes li:nth-child(4n) {
+  background: rgba(6, 182, 212, 0.5); /* light teal with more visibility */
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-500px) rotate(360deg) scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-1000px) rotate(720deg) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+  
+.animate-slide-in {
+    animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}

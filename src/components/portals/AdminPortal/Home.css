@@ -21,7 +21,6 @@
     --random: calc(random());
 }
 
-
 .bubbles li:nth-child(1) {
     left: 25%;
     width: 80px;
@@ -103,4 +102,65 @@
         transform: translateY(-1000px) scale(1.2);
         opacity: 0;
     }
+}
+
+/* Custom styles for Toast notifications */
+.Toastify__toast {
+    border-radius: 12px !important;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.Toastify__toast--success {
+    background: linear-gradient(to right, #22c55e, #4caf50);
+    color: white;
+    border: none;
+}
+
+.Toastify__toast--error {
+    background: linear-gradient(to right, #ef4444, #f87171);
+    color: white;
+    border: none;
+}
+
+.Toastify__toast--info {
+    background: linear-gradient(to right, #3b82f6, #60a5fa);
+    color: white;
+    border: none;
+}
+
+.Toastify__toast-body {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.Toastify__toast-icon {
+    display: none;
+}
+
+/* Adding slide animation on toast show */
+.Toastify__slide-enter {
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.Toastify__slide-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.Toastify__slide-exit {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.Toastify__slide-exit-active {
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
 }
