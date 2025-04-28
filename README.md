@@ -1,12 +1,158 @@
-# React + Vite
+# 🏆 **Complaint Portal** – Streamlined Issue Reporting and Resolution
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the **Complaint Portal**, your ultimate platform for seamless issue reporting and resolution! Whether you’re a **user**, **staff**, or **admin**, this portal ensures real-time communication for efficient complaint resolution.
 
-Currently, two official plugins are available:
+## 🌟 Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [About the Project](#about-the-project)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation Instructions](#installation-instructions)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Screenshots](#screenshots)
+- [License](#license)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📖 About the Project
+
+The **Complaint Portal** is a web-based application designed to simplify complaint management in various settings like educational institutions, companies, and communities. It supports **three distinct roles** to cater to different user needs:
+
+- **User Portal**: Report complaints, track status, and maintain a history.
+- **Staff Portal**: Manage complaints, mark progress, and update status.
+- **Admin Portal**: Oversee all complaints, assign tasks, manage users, and maintain overall control.
+
+---
+
+## 🚀 Features
+
+### **User Portal**: 
+- 📝 **Report Complaints**: Attach files and provide detailed descriptions.
+- 📈 **Track Status**: Follow the real-time status of your complaints.
+- 📜 **View History**: Access the full history of complaints submitted by you.
+
+### **Staff Portal**:
+- 📋 **Assigned Complaints**: View and manage complaints assigned to you.
+- ✅ **Update Status**: Mark complaints as "Completed" or "In Progress."
+- 🗨️ **Add Comments**: Provide progress updates on complaints.
+
+### **Admin Portal**:
+- 👥 **User Management**: Manage user profiles and roles.
+- 🎯 **Assign Complaints**: Delegate complaints to specific staff members.
+- 📊 **Filter Complaints**: Sort complaints by status (All, Pending, In Progress, Completed).
+- 🔒 **Security**: Logout functionality for secure access.
+
+---
+
+## ⚙️ Technologies Used
+
+- **Frontend**:
+  - ⚛️ **React.js** – For building an interactive and dynamic UI.
+  - 🌐 **Axios** – To facilitate communication with the backend.
+  - 🎨 **Tailwind CSS** – For sleek and responsive design.
+
+- **Backend**:
+  - 🚀 **Node.js** with **Express.js** – Powering the backend API.
+  - 🗃️ **MongoDB** – NoSQL database for efficient data storage.
+
+- **Authentication**:
+  - 🔑 **JWT (JSON Web Tokens)** – Secure authentication for user login.
+
+- **Additional Libraries**:
+  - 🔒 **bcrypt.js** – For secure password hashing.
+
+---
+
+Here's an updated version of the **Installation Instructions** and other sections, with proper formatting and clearer separation of commands:
+
+---
+
+## 💻 Installation Instructions
+
+To run the **Complaint Portal** locally, follow these steps:
+
+### 1. Clone the repository:
+```bash
+git clone https://github.com/pushkarraj7/complaint_portal_frontend.git
+cd complaint_portal_frontend
+```
+
+### 2. Install dependencies:
+
+#### For the **Frontend**:
+```bash
+cd client
+npm install
+```
+
+#### For the **Backend**:
+```bash
+cd server
+npm install
+```
+
+### 3. Start the application:
+
+#### Start the **Backend server**:
+```bash
+cd server
+node server.js
+```
+
+#### Start the **Frontend application**:
+```bash
+cd client
+npm start
+```
+
+---
+
+## 🛠️ Usage
+
+- **User Registration**: Create your account by signing up on the **User portal**.
+- **Report Complaints**: Once logged in, submit complaints with all necessary details through the **User portal**.
+- **Manage Complaints**: Staff can access their portal, manage complaints, and mark progress.
+- **Admin Functions**: Admins have complete control, overseeing all complaints and staff members.
+
+---
+
+## 🌱 Contributing
+
+We welcome contributions to make the **Complaint Portal** even better! Here's how you can help:
+
+- 🐞 **Report Bugs**: If you encounter any bugs, report them [here](https://github.com/pushkarraj7/complaint_portal/issues).
+- 💡 **Feature Requests**: Suggest new features or improvements by opening an issue.
+- 🛠️ **Code Contributions**: Fork the repo, create a new branch, and submit a pull request.
+
+To get started, follow the instructions under [Installation Instructions](#installation-instructions).
+
+---
+
+## 📸 Screenshots
+
+### **User Portal**
+![User Dashboard](https://raw.githubusercontent.com/pushkarraj7/complaint_portal_frontend/main/portal-dashboard.png?raw=true)
+_Above: The interactive dashboard for users to view and report complaints._
+
+### **Admin Portal**
+![Admin Dashboard](https://raw.githubusercontent.com/pushkarraj7/complaint_portal_frontend/main/admin-dashboard.png?raw=true)
+_Above: The admin dashboard for managing all complaints and users._
+
+### **Staff Portal**
+![Staff Dashboard](https://raw.githubusercontent.com/pushkarraj7/complaint_portal_frontend/main/staff-dashboard.png?raw=true)
+_Above: Staff portal for handling assigned complaints and progress tracking._
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 📬 Stay Connected
+
+For any questions or assistance, feel free to reach out to me at **[iampushkarraj7@gmail.com](mailto:iampushkarraj7@gmail.com)**. I'm happy to help!
+
+---
