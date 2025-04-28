@@ -1,0 +1,14 @@
+@keyframes bounceColor {
+    0%, 100% {
+        transform: translateY(0);
+        color: white;
+    }
+    50% {
+        transform: translateY(-10px);
+        color: #f43f5e; /* Tailwind's rose-600 color */
+    }
+}
+
+.animate-bounce-color {
+    animation: bounceColor 2s ease-in-out infinite;
+}

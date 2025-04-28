@@ -1,0 +1,73 @@
+.wave-animation {
+    display: inline-block;
+    animation: wave 1.5s ease-in-out infinite;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(10px);
+    }
+}
+
+.wave-animation span {
+    display: inline-block;
+    animation: wave-letter 1s ease-in-out infinite;
+}
+
+.wave-animation span:nth-child(odd) {
+    animation-delay: 0.1s;
+}
+
+.wave-animation span:nth-child(even) {
+    animation-delay: 0.2s;
+}
+
+@keyframes wave-letter {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+
+
+
+@keyframes bounceToUnderline {
+    0% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(8px);
+    }
+    50% {
+      transform: translateY(4px);
+    }
+    70% {
+      transform: translateY(6px);
+    }
+    100% {
+      transform: translateY(5px);
+    }
+  }
+  
+  /* Tailwind utility override */
+  .group-hover\:animate-bounceToUnderline:hover {
+    animation: bounceToUnderline 0.6s ease forwards;
+  }
+  
+  /* Tailwind already has drop-shadow-lg, but in case you want a custom one: */
+  .group-hover\:drop-shadow-lg:hover {
+    filter: drop-shadow(0 4px 6px rgba(79, 70, 229, 0.4)); /* Indigo-colored shadow */
+  }
+  

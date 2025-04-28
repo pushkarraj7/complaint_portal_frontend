@@ -7,12 +7,12 @@ function StaffHome() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showToast, setShowToast] = useState(false);
+    const [staffName, setStaffName] = useState("");  // To store the staff's name
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         try {
-            // Send the credentials to the backend
             const response = await fetch("http://localhost:5000/api/staff/login", {
                 method: "POST",
                 headers: {
@@ -20,15 +20,14 @@ function StaffHome() {
                 },
                 body: JSON.stringify({ email, password }),
             });
-
+    
             const data = await response.json();
-
+    
             if (response.status === 200) {
-                // Successful login, store the JWT token
-                localStorage.setItem("jwtToken", data.token);
-                navigate("/staff/dashboard"); // Redirect to dashboard
+                // Store the entire staff object in localStorage
+                localStorage.setItem("staff", JSON.stringify(data.staff));  // Store name, email, and department
+                navigate("/staff/dashboard");
             } else {
-                // Show error message if login fails
                 setShowToast(true);
                 setTimeout(() => setShowToast(false), 3000);
             }
@@ -38,9 +37,9 @@ function StaffHome() {
             setTimeout(() => setShowToast(false), 3000);
         }
     };
-
+    
     const handleBack = () => {
-        navigate("/");
+        navigate("/"); // Redirect to landing page
     };
 
     return (
